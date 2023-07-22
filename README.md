@@ -10,31 +10,161 @@ File Sharing allows us to distribute or provide access to digital files (such as
 In this tutorial, we will explore the ins and outs of File Sharing and Permissions to access files in different folders. </p><br />
 
 
-<h2>Video Demonstration</h2>
-
-- ### [YouTube: Azure Virtual Machines, Wireshark, and Network Security Groups](https://www.youtube.com)
-
 <h2>Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines/Compute)
 - Remote Desktop
-- Various Command-Line Tools
-- Various Network Protocols (SSH, RDH, DNS, HTTP/S, ICMP)
-- Wireshark (Protocol Analyzer)
-
+  
 <h2>Operating Systems Used </h2>
 
 - Windows 10 (21H2)
-- Ubuntu Server 20.04
+- Windows Server 2022
+
+<h2>Pre-requisites</h2>
+
+- Direct Directory installed in Windows Server VM in Azure and set as Domain Controller
+- Windows 10 VM in Azure joined to the Domain Controller
 
 <h2>High-Level Steps</h2>
 
-- Step 1
+- Create File Share Folders in Domain Controller
 - Step 2
 - Step 3
 - Step 4
 
-<h2>Actions and Observations</h2>
+<h2>Actions</h2>
+
+<p>
+In our Domain Controller Virtual Machine, we will create 4 folders in C:\
+</p>
+
+<p>
+C:\read access
+</p>
+<p>
+C:\write acess
+</p>
+<p>
+C:\no access
+</p>
+<p>
+C:\accounting
+</p><br />
+
+<p>
+Now, we'll set the permissions for the first three folders (we'll go back to the "accounting" folder later), by right-clicking on the folder in question, Properties → Sharing → Share, then type "Domain Users", and set permission to Read.
+</p>
+
+<p>
+<img src="(https://github.com/mariamcpherson/filshares/assets/139581822/3c9c1db5-a48b-4d10-8499-d7b6f2ba5c58)"/>
+</p>
+
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+<p>
+
+
 
 <p>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
