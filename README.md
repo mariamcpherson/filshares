@@ -29,13 +29,11 @@ In this tutorial, we will explore the ins and outs of File Sharing and Permissio
 
 - Create File Share Folders in Domain Controller and assign permissions
 - Check acees to shared folders from Client VM (Windows 10)
-- Step 3
-- Step 4
 
 <h2>Actions</h2>
 
 <p>
-In our Domain Controller Virtual Machine, we will create 4 folders in C:\
+In our Domain Controller Virtual Machine, we will create 3 folders in C:\
 </p>
 
 <p>
@@ -47,12 +45,10 @@ C:\write acess
 <p>
 C:\no access
 </p>
-<p>
-C:\accounting
-</p><br />
+<br />
 
 <p>
-Now, we'll set the permissions for the first three folders (we'll go back to the "accounting" folder later), by right-clicking on the folder in question, Properties → Sharing → Share, then type "Domain Users", and set permission to Read. Files in this folder can be accessed by all domain users, but they cannot make changes to those files.
+Now, we'll set the permissions for the  three folders by right-clicking on the folder in question, Properties → Sharing → Share, then type "Domain Users", and set permission to Read. Files in this folder can be accessed by all domain users, but they cannot make changes to those files.
 </p>
 
 <p>
