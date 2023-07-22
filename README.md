@@ -27,8 +27,8 @@ In this tutorial, we will explore the ins and outs of File Sharing and Permissio
 
 <h2>High-Level Steps</h2>
 
-- Create File Share Folders in Domain Controller
-- Step 2
+- Create File Share Folders in Domain Controller and assign permissions
+- Check acees to shared folders from Client VM (Windows 10)
 - Step 3
 - Step 4
 
@@ -52,7 +52,7 @@ C:\accounting
 </p><br />
 
 <p>
-Now, we'll set the permissions for the first three folders (we'll go back to the "accounting" folder later), by right-clicking on the folder in question, Properties → Sharing → Share, then type "Domain Users", and set permission to Read.
+Now, we'll set the permissions for the first three folders (we'll go back to the "accounting" folder later), by right-clicking on the folder in question, Properties → Sharing → Share, then type "Domain Users", and set permission to Read. Files in this folder can be accessed by all domain users, but they cannot make changes to those files.
 </p>
 
 <p>
@@ -60,132 +60,66 @@ Now, we'll set the permissions for the first three folders (we'll go back to the
 </p>
 
 <p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
-<p>
+Now, do the same for the "write access" folder, but set the Attribute to "Read/Write." 
+</p>
 
+<p>
+And for the "no access" folder: Properties → Sharing → Share, then type "Domain Admins", and set permission to Read/Write. This means that only Domain Admins can access the files inside that folder and make changes to them. 
+</p>
+
+<p>
+<img src="https://github.com/mariamcpherson/filshares/assets/139581822/1647dfbc-e7bb-459f-a609-b47b240c94a0"/>
+</p>
 
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+- Step 2:
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Let's check those permissions from our Client machine. I will log in into the Windows 10 machine as the random user I selected in the previous tutorial>
 </p>
-<br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+mydomain.com\bowa.mudo
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Password1
 </p>
-<br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+This user is not an admin, he is part of the Domain Users group, so we should expect for them to not be able to create a new file in "read access" folder, but only in the "write access" folder, and no access to the files inside "no access."
 </p>
+
+
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+In order to access the folders which are hosted in our Domain Controller Machine, we can go to the File Explorer and type \\(name of the VM). In my case, I named my Server VM DC-1 when I created it in Azure so I'll type \\dc-1
 </p>
-<br /># filshares
+
+<p>
+<img src="https://github.com/mariamcpherson/filshares/assets/139581822/2e055445-cae3-4d66-b575-a6776711251c"/>
+</p>
+
+<p>
+When bowa.mudo tries to access the "no access" folder, he is not able to, because he is not part of Domain Users, and only they can access this folder.
+</p>
+
+<p>
+<img src="https://github.com/mariamcpherson/filshares/assets/139581822/b9b3c0b2-790c-49d3-a585-a8a78afa36af"/>
+</p>
+
+<p>
+When bowa.mudo tries to create a plain text file in the "read access" folder, they're not able to because Domain Users can only view files in this folder.
+</p>
+
+<p>
+<img src="https://github.com/mariamcpherson/filshares/assets/139581822/f4ca79d4-286f-41cb-920b-bd3f67f6a605"/>
+</p>
+
+
+<p>
+Now, bowa.mudo can create a plain text file inside the "write access" folder because this folder has permissions set in such a way that members of Domain Users can create and view files.
+</p>
+
+<p>
+<img src="https://github.com/mariamcpherson/filshares/assets/139581822/677199b1-a261-4cff-90cf-cf73e6438937"/>
+</p>
